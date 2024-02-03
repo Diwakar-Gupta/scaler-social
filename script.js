@@ -284,15 +284,6 @@ function handleLike(key){
 
 document.addEventListener("updateFeed", localStorageSetHandler, false);
 
-feedText.onkeypress= (e) => {
-    const value = e.target.value;
-    
-    if(value.length > 99){
-        e.target.value = value.substring(0, 99);
-    }
-    postLength.innerText = `${value.length} / 100`;
-    
-};
 postButton.onclick = (event) => {
     const feed = {
         "name": "Joanne Graham",
