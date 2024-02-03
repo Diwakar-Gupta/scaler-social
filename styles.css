@@ -31,6 +31,9 @@ body {
 
 }
 
+#feed-container {
+    min-width: 25rem;
+}
 
 .top-feed-container {
     background-color: white;
@@ -39,16 +42,26 @@ body {
 
 }
 
-#post-button {
+button,
+.primary {
     padding: 0.5rem 2rem;
     border-radius: 1rem;
     background: blue;
-    color: wheat;
+    color: white;
     border: 0 solid white;
     font-weight: bolder;
 }
 
-#feed-editor {
+button,
+.escape {
+    color: black;
+    background: white;
+    font-weight: 100;
+    border: 1px solid;
+    margin-right: 1rem;
+}
+
+.feed-editor {
     padding: 1rem;
     background: white;
     border: 1px solid #d7dee5;
@@ -58,9 +71,15 @@ body {
     display: flex;
     border: 1px solid #d7dee5;
     padding: 1rem;
+}
+
+.feed-with-comment-container {
     margin-top: 2rem;
 }
 
+.comment {
+    margin-left: 3rem;
+}
 
 .flex {
     display: flex;
@@ -74,10 +93,16 @@ body {
     align-items: flex-start;
 }
 
+.justify-end {
+    justify-content: flex-end;
+}
+
 textarea {
     border: none;
+    width: 100%;
 }
 
 textarea:focus {
     border: none;
+    outline: none
 }
