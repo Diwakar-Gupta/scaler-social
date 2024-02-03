@@ -182,7 +182,7 @@ const localStorageSetHandler = (e) => {
                             (comment.key === editFeedId)?(
                                 `
                                 <div class="flex justify-end">
-                                    <button class="escape">Cancel</button>
+                                    <button class="escape" onclick="onEditPostCancel()">Cancel</button>
                                     <button class="primary" onclick="onEditPostSave(${comment.key})">Post</button>
                                 </div>`
                             ):(
@@ -243,8 +243,8 @@ function onEditPostSave(key) {
     updateFeed(feed);
     updateFeedUI();
 }
-function onEditPostCancel(key) {
-    setEditFeed(null);
+function onEditPostCancel() {
+    setEditFeed(-1);
     updateFeedUI();
 }
 function handleEdit(key) {
