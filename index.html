@@ -25,7 +25,7 @@
                             <img src="https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/064/031/original/profile_image.png?1706888739"
                                 alt="person" />
                             <textarea name="" id="feed-text" placeholder="Type your thoughts here..." id="" cols="40"
-                                rows="10"></textarea>
+                                rows="10" maxlength="100" oninput="document.querySelector('#post-length').innerText = `${this.value.length} / 100`;"></textarea>
                         </div>
                         <div class="flex space-between">
                             <span id="post-length">0 / 100</span>
