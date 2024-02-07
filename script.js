@@ -126,7 +126,7 @@ const localStorageSetHandler = (e) => {
                                       feed.key
                                     })">
                                 <img src="https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/064/027/original/delete.png?1706888643"
-                                    alt="delete" onclick="handleDelete(${
+                                    alt="delete" onclick="promptDeleteConfirmation(${
                                       feed.key
                                     })">
                             </div>
@@ -198,7 +198,7 @@ const localStorageSetHandler = (e) => {
                                       comment.key
                                     })">
                                 <img src="https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/064/027/original/delete.png?1706888643"
-                                    alt="delete" onclick="handleDelete(${
+                                    alt="delete" onclick="promptDeleteConfirmation(${
                                       comment.key
                                     })">
                             </div>
@@ -279,7 +279,7 @@ function handleEdit(key) {
   setEditFeed(key);
   updateFeedUI();
 }
-function deleteFeed(key) {
+function handleDeleteFeed(key) {
   const feed = getFeedList()[key];
   if (!feed) return;
   deleteFeed(key);
@@ -298,9 +298,31 @@ function deleteFeed(key) {
 
   updateFeedUI();
 }
-function handleDelete(key) {
+function promptDeleteConfirmation(key) {
   document.querySelector(".overlay").style.display = "block";
-  document.querySelector(".modal").style.display = "block";
+  let modal = document.querySelector(".modal");
+  modal.style.display = "block";
+  modal.setAttribute("feedKey", key);
+}
+function deleteModalCloseHandle() {
+  document.querySelector(".overlay").style.display = "none";
+  let modal = document.querySelector(".modal");
+  modal.style.display = "none";
+}
+function deleteModalCancelHandle(params) {
+  deleteModalCloseHandle();
+}
+function modalKeyDownHandler(event) {
+  if (event.keyCode === 27) {
+    deleteModalCloseHandle();
+  }
+}
+function deleteModalConfirmHandle() {
+  let modal = document.querySelector(".modal");
+  let feedKey = parseInt(modal.getAttribute("feedKey"));
+
+  handleDeleteFeed(feedKey);
+  deleteModalCloseHandle();
 }
 function handleComment(key) {
   setReplyFeed(key);
